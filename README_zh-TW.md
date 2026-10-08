@@ -149,3 +149,10 @@ KU5P_HDMI/
 4. **生成位元流 (Generate Bitstream)**：
    * 執行 **Run Synthesis** → **Run Implementation** → **Generate Bitstream**。
    * 將產生的 `.bit` 檔燒錄至板載 FPGA，連接 HDMI 線至電視或顯示器，即可看見流光畫面並聽見沈穩的 400 Hz「嘟、嘟」節奏音！
+
+---
+
+## 授權條款與商標聲明 (License & Disclaimer)
+
+* **開源授權**：本專案採用 [MIT License](LICENSE) 授權發布，歡迎自由使用、學習與修改。
+* **商標聲明**：HDMI、HDMI High-Definition Multimedia Interface 與 HDMI 標誌為 HDMI Licensing Administrator, Inc. 之商標或註冊商標。本專案提及 HDMI 僅用於技術規格與硬體相容性之合理描述（Nominative Fair Use）。

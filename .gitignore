@@ -1,0 +1,18 @@
+# Vivado temporary and log files
+*.jou
+*.log
+.Xil/
+*.str
+*.backup.log
+*.backup.jou
+
+# Vivado generated bitstreams and checkpoints
+*.bit
+*.dcp
+*.bin
+*.hwdef
+
+# Simulation outputs
+xsim.dir/
+*.wdb
+*.vcd

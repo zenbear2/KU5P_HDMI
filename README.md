@@ -149,3 +149,10 @@ KU5P_HDMI/
 4. **Generate Bitstream**:
    * Click **Run Synthesis** → **Run Implementation** → **Generate Bitstream**.
    * Program the generated `.bit` file to the FPGA board. Connect an HDMI cable to a TV or monitor to see the smooth rainbow flowing streamer and hear the 400 Hz double-beep chime!
+
+---
+
+## License & Disclaimer
+
+* **License**: This project is licensed under the [MIT License](LICENSE).
+* **Trademark Disclaimer**: HDMI, HDMI High-Definition Multimedia Interface, and the HDMI Logo are trademarks or registered trademarks of HDMI Licensing Administrator, Inc. References to HDMI in this repository are strictly for technical description and interoperability purposes under nominative fair use.
