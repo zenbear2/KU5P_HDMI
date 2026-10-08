@@ -1,7 +1,7 @@
 set_property IOSTANDARD LVCMOS18 [get_ports clk_i]
-set_property IOSTANDARD LVCMOS18 [get_ports rst]
+set_property IOSTANDARD LVCMOS12 [get_ports rst]
 set_property PACKAGE_PIN E18 [get_ports clk_i]
-set_property PACKAGE_PIN r20 [get_ports rst]
+set_property PACKAGE_PIN p19 [get_ports rst]
 
 set_property IOSTANDARD LVCMOS33 [get_ports HDMI0_OE]
 set_property IOSTANDARD LVDS [get_ports TMDSp_clock]
