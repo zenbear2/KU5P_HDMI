@@ -60,13 +60,16 @@ flowchart TD
 
 本專案**預設啟用 1280x720p @ 60Hz**（CEA-861 VIC = 4）。此解析度相容於現今所有 HDMI 螢幕與電視，且時脈頻率適中、易於時序收斂（Timing Closure）。
 
-### 1. 為什麼序列化時脈是 5x 時脈（而非 10x）？
+### 為什麼序列化時脈是 5x 時脈（而非 10x）？
 * HDMI TMDS 協議每筆畫素資料由 8-bit 編碼為 **10-bit** 傳送。
-* 若採用傳統 SDR（單邊沿觸發）串列輸出，需要 10 倍時脈（$74.25 \times 10 = \mathbf{742.5\text{ MHz}}$），高頻時脈在 FPGA 走線與 I/O 容易引發嚴重的信號完整性與時序收斂問題。
+* 若採用傳統 SDR（單邊沿觸發）串列輸出，需要 10 倍時脈（74.25 MHz × 10 = 742.5 MHz），高頻時脈在 FPGA 走線與 I/O 容易引發嚴重的信號完整性與時序收斂問題。
 * 本設計採用 Kintex UltraScale+ 專用 I/O 邏輯原語 **`ODDRE1` (Double Data Rate Output Register)**：
   * 在 `clk_pixel_x5` 的**上升沿**輸出 Bit 0，在**下降沿**輸出 Bit 1（每個時脈週期可輸出 2 個 bits）。
   * 因此，傳送一個 10-bit TMDS 字元僅需 5 個時脈週期：
-    $$f_{\text{clk\_pixel\_x5}} = \frac{10\text{ bits}}{2\text{ bits/cycle}} \times f_{\text{clk\_pixel}} = 5 \times 74.25\text{ MHz} = \mathbf{371.25\text{ MHz}}$$
+
+$$
+f_{\text{serial}} = \frac{10\text{ bits}}{2\text{ bits/cycle}} \times f_{\text{pixel}} = 5 \times 74.25\text{ MHz} = 371.250\text{ MHz}
+$$
 
 ---
 
@@ -144,5 +147,5 @@ KU5P_HDMI/
      * `clk_out2`：設為 **`371.250 MHz`**（驅動 `clk_pixel_x5`）。
    * 取消勾選 Reset 與 Locked 腳位（由頂層直接控制）。
 4. **生成位元流 (Generate Bitstream)**：
-   * 執行 **Run Synthesis** $\to$ **Run Implementation** $\to$ **Generate Bitstream**。
+   * 執行 **Run Synthesis** → **Run Implementation** → **Generate Bitstream**。
    * 將產生的 `.bit` 檔燒錄至板載 FPGA，連接 HDMI 線至電視或顯示器，即可看見流光畫面並聽見沈穩的 400 Hz「嘟、嘟」節奏音！
